@@ -1,7 +1,6 @@
 <?php
 
-function    dbconnect()
-{
+function dbconnect(){
     $user = 'root';
     $pass = 'lisalol';
     $option = 
