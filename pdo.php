@@ -3,7 +3,7 @@
 function dbconnect(){
     $user = 'root';
     $pass = 'lisalol';
-    $option = 
+  //  $option = 
     try {
         $db = new PDO('mysql:host=localhost:3306;dbname=camagru', $user, $pass);
         return $db;

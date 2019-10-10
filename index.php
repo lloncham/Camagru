@@ -11,6 +11,7 @@ session_start();
         nav>ul>li{float:right; position:relative; margin: 0.5%; top: -4vw}
         li a{display:inline-block; text-decoration:none; color : pink}
         </style>
+
 </head>
 <body>
 <nav><H1>CAMAGRU</H1>
@@ -28,4 +29,4 @@ else
 }
 ?>
 </nav>
-    </body>
+</body>
