@@ -1,29 +1,21 @@
 <?php
+include('pdo.php');
 session_start();
+    $db = dbconnect();
+if ($_POST['submit'] == "OK" && $_POST['login'] !== NULL && $_POST['passwd'] !== NULL && $_POST['e-mail'] !== NULL
+&& $_POST['login'] !== "" && $_POST['passwd'] !== "" && $_POST['e-mail'] !== "")
+{
+    $mail = $_POST['e-mail'];
+    $identifiant = $_POST['login'];
+    $passwd = hash(whirlpool, $_POST['passwd']);
+    $acces = 0;
+    $req = $db->prepare('INSERT INTO compte(mail, identifiant, mdp, acces) VALUES (:mail, :identifiant, :mdp, :acces)');
+    $req->execute(array(
+        'mail' => $mail,
+        'identifiant' => $identifiant,
+        'mdp' => $passwd,
+        'acces' => $acces,
+    ));
+    mail("lisalonchamp@yahoo.fr", "Welcome!", "coucou\n");
+    header("location: index.php");}
 ?>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="header.css">
-    <style>
-        .box {width: 20vw; height: 30vw; margin-left: auto ; margin-right: auto ; background-color: grey}
-    </style>
-    <title>Créer son compte</title>
-</head>
-<body>
-    <nav><H1>CAMAGRU</H1></nav>
-    <div> Créer son compte
-        <form action="create.php" method="POST">
-            Adresse e-mail: <input type="e-mail" name="e-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
-            title="Il ne s'agit pas d'une adresse e-mail valide">
-            <br/>
-            Identifiant: <input type="text" name="login">
-            <br/>
-            Mot de passe: <input type="password" name="passwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
-            title="Doit contenir au moins un chiffre, une majuscule, une minuscule ainsi qu'être composé d'au moins 8 caractères">
-            <br />
-            <input type="submit" name="submit" value="OK">
-        </form>
-    </div>
-</body>
-</html>

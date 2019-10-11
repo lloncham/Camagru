@@ -18,8 +18,8 @@ session_start();
 <?php
 if ($_SESSION['loggued_on_user'] === "" || $_SESSION['loggued_on_user'] === NULL)
 {
-    echo "<ul><li><a href=\"login.php\">CONNEXION</a></li>";
-    echo "<li><a href=\"create.php\">CREER UN COMPTE</a></li></ul>";
+    echo "<ul><li><a href=\"login.html\">CONNEXION</a></li>";
+    echo "<li><a href=\"create.html\">CREER UN COMPTE</a></li></ul>";
 }
 else
 {
