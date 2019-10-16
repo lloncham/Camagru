@@ -1,21 +1,33 @@
 <html>
-<head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="header.css">
-    <style>
-        .box {width: 20vw; height: 30vw; margin-left: auto ; margin-right: auto ; background-color: grey}
-    </style>
-    <title>Réinitialiser son compte</title>
-</head>
-<body>
-    <nav><H1>CAMAGRU</H1></nav>
-    <div> Réinitialiser son compte
-        <form action="reinitialisation.php" method="POST">
-            Adresse e-mail: <input type="mail" name="mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
-            title="Il ne s'agit pas d'une adresse e-mail valide">
-            <br/>
-            <input type="submit" name="submit" value="Recevoir un mail">
-        </form>
-    </div>
-</body>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="header.css" />
+        <style>
+            .box {
+                width: 20vw;
+                height: 30vw;
+                margin-left: auto;
+                margin-right: auto;
+                background-color: grey;
+            }
+        </style>
+        <title>Réinitialiser son compte</title>
+    </head>
+    <body>
+        <nav><H1>CAMAGRU</H1></nav>
+        <div>
+            Réinitialiser son compte
+            <form action="reinitialisation.php" method="POST">
+                Adresse e-mail:
+                <input
+                    type="mail"
+                    name="mail"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                    title="Il ne s'agit pas d'une adresse e-mail valide"
+                />
+                <br />
+                <input type="submit" name="submit" value="Recevoir un mail" />
+            </form>
+        </div>
+    </body>
 </html>
