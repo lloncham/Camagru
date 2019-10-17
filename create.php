@@ -1,8 +1,13 @@
 <?php
-include('pdo.php');
 
+include('pdo.php');
+include('mail.php');
 session_start();
+
+ini_set("display_errors", 1);
+
 $db = dbconnect();
+
 if ($_POST['submit'] == "OK" && $_POST['login'] !== NULL && $_POST['passwd'] !== NULL && $_POST['e-mail'] !== NULL
 && $_POST['login'] !== "" && $_POST['passwd'] !== "" && $_POST['e-mail'] !== "")
 {
@@ -16,5 +21,6 @@ if ($_POST['submit'] == "OK" && $_POST['login'] !== NULL && $_POST['passwd'] !==
         'identifiant' => $identifiant,
         'mdp' => $passwd,
     ));
+    activaccount($mail, $db);
 }
 ?>
