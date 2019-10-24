@@ -4,8 +4,6 @@ include('pdo.php');
 include('mail.php');
 session_start();
 
-ini_set("display_errors", 1);
-
 $db = dbconnect();
 
 if ($_POST['submit'] == "OK" && $_POST['login'] !== NULL && $_POST['passwd'] !== NULL && $_POST['e-mail'] !== NULL
@@ -22,5 +20,6 @@ if ($_POST['submit'] == "OK" && $_POST['login'] !== NULL && $_POST['passwd'] !==
         'mdp' => $passwd,
     ));
     activaccount($mail, $db);
+    header('location: /login.html');
 }
 ?>

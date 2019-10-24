@@ -1,5 +1,6 @@
 <?php
 include('pdo.php');
+include('mail.php');
 session_start();
 $db = dbconnect();
 if ($_POST['mail'] !== NULL && $_POST['mail'] !== "")
@@ -14,5 +15,8 @@ if ($_POST['mail'] !== NULL && $_POST['mail'] !== "")
 if ($donnees == NULL)
     echo "introuvable";
 else 
-    header("location: index.php");
+{
+    resetaccount($_POST['mail'], $db);
+    // header("location: index.php");
+}
 ?>

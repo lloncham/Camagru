@@ -4,10 +4,10 @@ session_start();
 $db = dbconnect();
 if ($_POST['login'] !== NULL && $_POST['login'] !== "" && $_POST['passwd'] !== NULL && $_POST['passwd'] !== "")
 {
-    $rep = $db->prepare('SELECT identifiant, mdp, acces FROM compte WHERE identifiant=:identifiant AND mdp=:mdp');
+    $rep = $db->prepare('SELECT identifiant, mdp FROM compte WHERE identifiant=:identifiant AND mdp=:mdp');
     $rep->execute(array(
         'identifiant' => $_POST['login'],
-        'mdp' => $_POST['passwd'],
+        'mdp' => hash("sha512", $_POST['passwd']),
     ));
     $donnees = $rep->fetch();
     $rep->closeCursor();
@@ -15,5 +15,8 @@ if ($_POST['login'] !== NULL && $_POST['login'] !== "" && $_POST['passwd'] !== N
 if ($donnees == NULL)
     echo "introuvable";
 else 
-    header("location: index.php");
+{
+    $_SESSION['loggued_on_user'] = $_POST['login'];
+    header("location: /index.php");
+}
 ?>

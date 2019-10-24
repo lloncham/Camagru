@@ -2,9 +2,9 @@
 
 function dbconnect(){
     $user = 'root';
-    $pass = 'lisalol';
+    $pass = 'coucou';
     try {
-        $db = new PDO('mysql:host=localhost:3306;dbname=camagru', $user, $pass);
+        $db = new PDO('mysql:host=localhost;dbname=camagru', $user, $pass);
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $db;
     }
