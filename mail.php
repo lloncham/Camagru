@@ -33,9 +33,7 @@ function resetpswd($to, $token, $ID, $identifiant){
     $subject = "Réinitialisation de votre mot de passe";
     $message = "Bonjour $identifiant,\n 
     
-    Pour réinitialiser votre compte cliquez sur le lien ci-dessous!\n
-
-    http://localhost:8080/resetpswd.php?id=" .urlencode($ID). "&token=" .urlencode($token). " \n
+    Votre nouveau mot de passe est le suivant : " .$token . " \n
 
     ---------------\n
     
@@ -64,9 +62,9 @@ function resetaccount($mail, $db)
 {
     $donnees = foundmaildata($mail, $db);
     $token = createtoken();
-    $req = $db->prepare('UPDATE compte SET token=:token WHERE ID=:ID');
+    $req = $db->prepare('UPDATE compte SET mdp=:token WHERE ID=:ID');
     $req->execute(array(
-        'token' => $token,
+        'token' => hash("sha512", $token),
         'ID' => $donnees['ID'],
     ));
     resetpswd($mail, $token, $donnees['ID'], $donnees['identifiant']);

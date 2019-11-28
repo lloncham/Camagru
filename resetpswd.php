@@ -41,7 +41,7 @@ if ($token == $donnees['token'] && $_POST['passwd'] !== NULL && $_POST['passwd']
         'mdp' => hash("sha512", $_POST['passwd']),
         'ID' => $ID,
     ));
-    echo $ID . "coucou";
+    echo $ID . "coucou\n";
     echo "succès, votre mot de passe a bien été changé";
 }
 else 

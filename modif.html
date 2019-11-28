@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="header.css" />
+        <meta charset="utf-8" />
+        <title>Modif</title>
+    </head>
+    <body>
+        <nav>
+            <H1><a href="index.php">CAMAGRU</a></H1>
+        </nav>
+        <form action="modif.php" method="POST">
+            <p>
+                Mail :
+                <input type="text" name="mail" />
+            </p>
+            <p>
+                Identifiant :
+                <input type="text" name="login" />
+            </p>
+            <p>
+                Ancien mot de passe :
+                <input type="password" name="anmdp" />
+            </p>
+            <p>
+                Nouveau mot de passe :
+                <input
+                    type="password"
+                    name="nvmdp"
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    title="Doit contenir au moins un chiffre, une majuscule, une minuscule ainsi qu'être composé d'au moins 8 caractères"
+                />
+            </p>
+            <p>
+                Confirmation nouveau mot de passe :
+                <input type="password" name="confmdp" />
+            </p>
+            <p>
+                <input type="submit" name="submit" value="OK" />
+            </p>
+        </form>
+    </body>
+</html>

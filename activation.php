@@ -1,5 +1,15 @@
-<?php
+<html>
+<head>
+    <link rel="stylesheet" href="header.css">
+    <meta charset="utf-8"/>
+        <title>Camagru</title>
+</head>
+<body>
+<nav><H1><a href="index.php">CAMAGRU</a></H1>
+</nav>
+</body>
 
+<?php
 include('pdo.php');
 session_start();
 $db = dbconnect();

@@ -1,3 +1,21 @@
-H1 {color : pink; text-align : center; font-family : Verdana; font-size : 2.4vw}
-BODY {background-color : pink}
-nav{background-color : black; width : 100%; height: 7vw ; float : right; font-size : 0.7vw; position : relative}
+h1 {
+  color: #fafafa;
+  text-align: center;
+  font-family: Verdana;
+  font-size: 2.4vw;
+}
+a {
+  text-decoration: none;
+  color: #fafafa;
+}
+body {
+  background-color: #fafafa;
+}
+nav {
+  background-color: grey;
+  width: 100%;
+  height: 7vw;
+  float: right;
+  font-size: 0.7vw;
+  position: relative;
+}
