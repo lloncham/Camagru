@@ -5,7 +5,7 @@ function photo() {
     var canvas = document.querySelector("#canvas");
     // var photo = document.querySelector('#photo');
     var startbutton = document.querySelector("#startbutton");
-    var width = 400;
+    var width = 600;
     var height = 0;
 
     navigator.getUserMedia =

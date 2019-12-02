@@ -1,11 +1,3 @@
-<?php
-
-include('pdo.php');
-
-session_start();
-$db = dbconnect();
-?>
-
 <html>
     <head>
         <link
@@ -22,95 +14,54 @@ $db = dbconnect();
         <title>Camagru</title>
     </head>
     <body>
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
-                <a class="navbar-item" href="index.html">
-                    CAMAGRU
-                </a>
+        <?php include("header.php"); ?>
+        <div class="section">
+            <div class="container">
+                <?php
+                include('pdo.php');
+                error_reporting(E_ALL);
 
-                <a
-                    role="button"
-                    class="navbar-burger burger"
-                    aria-label="menu"
-                    aria-expanded="false"
-                    data-target="navbarBasicExample"
-                >
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
+                if (session_status() != PHP_SESSION_ACTIVE)
+                    session_start();
+
+                $db = dbconnect();
+
+                $rep = $db->prepare('SELECT * FROM image as img LEFT JOIN compte as co ON img.iduser = co.id');
+                $rep->execute();
+
+                $donnees = $rep->fetchAll();
+                $rep->closeCursor();
+                foreach ($donnees as $tab)
+                {
+                    if ($tab['img'])
+                        echo '
+                            <div class="columns">
+                                <div class="column is-8 is-offset-2">
+                                    <div class="card">
+                                        <div class="card-image">
+                                            <figure class="image is-fullwidth">
+                                                <img src=" ' . $tab['img'] . '">
+                                            </figure>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    <figure class="image is-48x48">
+                                                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                                                    </figure>
+                                                </div>
+                                                <div class="media-content">
+                                                    <p class="title is-4">'. $tab['identifiant'] .'</p>
+                                                    <p class="subtitle is-6">' . $tab['date'] . '</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>';
+                }
+                ?>
             </div>
-
-            <?php
-            if ($_SESSION['loggued_on_user'] !== "" && $_SESSION['loggued_on_user'] !== NULL)
-            {
-                echo "<div class=\"navbar-menu\">
-                <div class=\"navbar-start\">
-                    <a class=\"navbar-item\" href=\"index.php\">
-                        Home
-                    </a>
-                    <a class=\"navbar-item\" href=\"image.html\">
-                        Take a picture!
-                    </a></div>
-                    </div>
-                    <div class=\"navbar-end\">
-                    <div class=\"navbar-item\">
-                        <div class=\"buttons\">
-                            <a class=\"button is-primary\" href=\"create.html\">
-                                <strong>My account</strong>
-                            </a>
-                            <a class=\"button is-light\" href=\"logout.html\">
-                                Log out
-                            </a>
-                        </div>
-                    </div>
-                </div></nav>";
-            }
-            else 
-            {
-                echo "<div class=\"navbar-end\">
-                    <div class=\"navbar-item\">
-                        <div class=\"buttons\">
-                            <a class=\"button is-primary\" href=\"create.html\">
-                                <strong>Sign up</strong>
-                            </a>
-                            <a class=\"button is-light\" href=\"login.html\">
-                                Log in
-                            </a>
-                        </div>
-                    </div>
-                </div></nav>
-                ";
-            }
-        $rep = $db->prepare('SELECT * FROM image WHERE iduser=:iduser');
-        $rep->execute(array(
-            'iduser' => $_SESSION['id_user'],
-        ));
-        $donnees = $rep->fetchAll();
-        $rep->closeCursor();
-        foreach ($donnees as $tab)
-        {
-            if ($tab['img'])
-                echo "<div class=\"box\">
-                        <article class=\"media\">
-                <div class=\"media-content\">
-                  <div class=\"content\">
-                    <p>
-                      <strong>" . $tab['login'] . "</strong> <small>" . $tab['date'] . "</small> <br>
-                      <img src=\" " . $tab['img'] . "\">
-                    </p>
-                  </div>
-                  <nav class=\"level is-mobile\">
-                    <div class=\"level-left\">
-                      <a class=\"level-item\" aria-label=\"like\">
-                        <span class=\"icon is-small\">
-                          <i class=\"fas fa-heart\" aria-hidden=\"true\"></i>
-                        </span>
-                      </a>
-                    </div>
-                  </nav>
-                </div>
-              </article>
-            </div>";
-        }
-        ?>
+        </div>
+    </body>
+</html>
