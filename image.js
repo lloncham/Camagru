@@ -3,9 +3,8 @@ function photo() {
     var video = document.querySelector("#video");
     // var cover = document.querySelector('#cover');
     var canvas = document.querySelector("#canvas");
-    // var photo = document.querySelector('#photo');
     var startbutton = document.querySelector("#startbutton");
-    var width = 600;
+    var width = 500;
     var height = 0;
 
     navigator.getUserMedia =

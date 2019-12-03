@@ -19,7 +19,6 @@
             <div class="container">
                 <?php
                 include('pdo.php');
-                error_reporting(E_ALL);
 
                 if (session_status() != PHP_SESSION_ACTIVE)
                     session_start();
@@ -49,12 +48,37 @@
                                                     <figure class="image is-48x48">
                                                     <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
                                                     </figure>
-                                                </div>
-                                                <div class="media-content">
+                                                    </div>
+                                                    <div class="media-content">
                                                     <p class="title is-4">'. $tab['identifiant'] .'</p>
                                                     <p class="subtitle is-6">' . $tab['date'] . '</p>
+                                                    </div>
+                                                    <nav class="level is-mobile">
+                                                    <div class="level-left">
+                                                        <a class="level-item">A REMPLACER
+                                                        <span class="icon is-large"><i class="fas fa-heart"></i></span>
+                                                        </a>
+                                                    </div>
+                                                    </nav>
                                                 </div>
-                                            </div>
+                                                ';
+                                                if (array_key_exists('loggued_on_user', $_SESSION) && $_SESSION['loggued_on_user'] !== "" && $_SESSION['loggued_on_user'] !== NULL)
+                                                {
+                                                    echo '
+                                                    <form method="POST" action="comment.php">
+                                                        <div class="field">
+                                                            <div class="control">
+                                                            <label class="label">Comment</label>
+                                                                <input type="hidden" name="id_img" value="' . $tab['id'] . '">
+                                                                <textarea name="comment" class="textarea" placeholder="Textarea"></textarea>
+                                                            </div>
+                                                            </div>
+                                                            <div class="control">
+                                                                <button class="button is-primary" name="login_sub">Submit</button>
+                                                            </div>
+                                                    </form>';
+                                                } 
+                                            echo '
                                         </div>
                                     </div>
                                 </div>
