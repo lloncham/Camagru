@@ -64,7 +64,7 @@ foreach ($donnees as $tab)
                 <div class="column">
                     <div class="card">
                         <div class="card-image">
-                            <figure class="image is-128x128">
+                            <figure class="image">
                                 <img src=" ' . $tab['img'] . '">
                             </figure>
                         </div>

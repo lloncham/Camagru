@@ -39,7 +39,7 @@
                                     <div class="card">
                                         <div class="card-image">
                                             <figure class="image is-fullwidth">
-                                                <img src=" ' . $tab['img'] . '">
+                                                <a href="photo.php?id_img=' . urlencode($tab['id']) . '"><img src=" ' . $tab['img'] . '"></a>
                                             </figure>
                                         </div>
                                         <div class="card-content">
@@ -66,16 +66,30 @@
                                                 {
                                                     echo '
                                                     <form method="POST" action="comment.php">
-                                                        <div class="field">
-                                                            <div class="control">
-                                                            <label class="label">Comment</label>
-                                                                <input type="hidden" name="id_img" value="' . $tab['id'] . '">
-                                                                <textarea name="comment" class="textarea" placeholder="Textarea"></textarea>
-                                                            </div>
-                                                            </div>
-                                                            <div class="control">
-                                                                <button class="button is-primary" name="login_sub">Submit</button>
-                                                            </div>
+                                                        <article class="media">
+                                                            <figure class="media-left">
+                                                                <p class="image is-64x64">
+                                                                    <img src="https://bulma.io/images/placeholders/128x128.png">
+                                                                </p>
+                                                            </figure>
+                                                                <div class="media-content">
+                                                                    <div class="field">
+                                                                        <p class="control">
+                                                                            <input type="hidden" name="id_img" value="' . $tab['id'] . '">
+                                                                            <textarea name="comment" class="textarea" placeholder="Add a comment..."></textarea>
+                                                                        </p>
+                                                                    </div>
+                                                                    <nav class="level">
+                                                                        <div class="level-left">
+                                                                            <div class="level-item">
+                                                                                <div class="control">
+                                                                                    <button class="button is-primary" name="login_sub">Submit</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </nav>
+                                                                </div>
+                                                        </article>
                                                     </form>';
                                                 } 
                                             echo '
