@@ -48,12 +48,12 @@
                                                     <figure class="image is-48x48">
                                                     <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
                                                     </figure>
-                                                    </div>
-                                                    <div class="media-content">
+                                                </div>
+                                                <div class="media-content">
                                                     <p class="title is-4">'. $tab['identifiant'] .'</p>
                                                     <p class="subtitle is-6">' . $tab['date'] . '</p>
-                                                    </div>
-                                                    <nav class="level is-mobile">
+                                                </div>
+                                                <nav class="level is-mobile">
                                                     <div class="level-left">
                                                         <a class="level-item">A REMPLACER
                                                         <span class="icon is-large"><i class="fas fa-heart"></i></span>
@@ -68,7 +68,7 @@
                                                     <form method="POST" action="comment.php">
                                                         <article class="media">
                                                             <figure class="media-left">
-                                                                <p class="image is-64x64">
+                                                                <p class="image is-48x48">
                                                                     <img src="https://bulma.io/images/placeholders/128x128.png">
                                                                 </p>
                                                             </figure>

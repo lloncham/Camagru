@@ -7,18 +7,6 @@
                 <a class="navbar-item" href="index.php">
                     CAMAGRU
                 </a>
-
-                <a
-                    role="button"
-                    class="navbar-burger burger"
-                    aria-label="menu"
-                    aria-expanded="false"
-                    data-target="navbarBasicExample"
-                >
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
             </div>
 
             <?php
@@ -36,7 +24,10 @@
                     <div class=\"navbar-end\">
                     <div class=\"navbar-item\">
                         <div class=\"buttons\">
-                            <a class=\"button is-primary\" href=\"modif.php\">
+                            <a class=\"button is-dark\" href=\"notification.php\">
+                                <img src=\"icones/cloche.png\"></img>
+                            </a>
+                            <a class=\"button is-primary\" href=\"account.php\">
                                 <strong>My account</strong>
                             </a>
                             <a class=\"button is-info\" href=\"logout.php\">

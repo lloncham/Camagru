@@ -116,34 +116,40 @@ echo '
                         </article>';
             }
         }
+        echo '
+        </div></div>
+';
         if (array_key_exists('loggued_on_user', $_SESSION) && $_SESSION['loggued_on_user'] !== "" && $_SESSION['loggued_on_user'] !== NULL)
         {
             echo '
-                        <form method="POST" action="comment.php">
-                            <article class="media">
-                                <figure class="media-left">
-                                    <p class="image is-64x64">
-                                        <img src="https://bulma.io/images/placeholders/128x128.png">
-                                    </p>
-                                </figure>
-                                <div class="media-content">
-                                    <div class="field">
-                                        <p class="control">
-                                            <input type="hidden" name="id_img" value="' . $tab['id'] . '">
-                                            <textarea name="comment" class="textarea" placeholder="Add a comment..."></textarea>
-                                        </p>
-                                    </div>
-                                    <nav class="level">
-                                        <div class="level-left">
-                                            <div class="level-item">
-                                                <div class="control">
-                                                    <button class="button is-primary" name="login_sub">Submit</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </nav>
+            <div class="section">
+            <div class="container">
+            <form method="POST" action="comment.php">
+            <article class="media">
+                <figure class="media-left">
+                    <p class="image is-64x64">
+                        <img src="https://bulma.io/images/placeholders/128x128.png">
+                    </p>
+                </figure>
+                <div class="media-content">
+                    <div class="field">
+                        <p class="control">
+                            <input type="hidden" name="id_img" value="' . $tab['id'] . '">
+                            <textarea name="comment" class="textarea" placeholder="Add a comment..."></textarea>
+                        </p>
+                    </div>
+                    <nav class="level">
+                        <div class="level-left">
+                            <div class="level-item">
+                                <div class="control">
+                                    <button class="button is-primary" name="login_sub">Submit</button>
                                 </div>
-                            </article>
-                        </form> </div></div>
-';
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </article>
+        </form>
+            </div>
+        </div>';
         } 
